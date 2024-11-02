@@ -352,6 +352,14 @@ Para realizar el análisis comparativo, se debe correr el siguiente comando:
 
 Donde `<n>` es el número de pruebas que se desean realizar.
 
+> [!WARNING] Importante
+> Es necesario instalar `matplotlib` y `pandas` para la ejecucion del programa de analisis. 
+> Puede hacer dicha instalacion con el comando:
+> ```bash
+> pip install -r requirements.txt
+> ```
+
+
 En la ultima prueba realizada se obtuvieron los siguientes resultados:
 
 <!-- n   iterative   recursive        tail
