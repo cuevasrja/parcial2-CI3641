@@ -21,6 +21,11 @@ if [ $1 == "help" ]; then
     exit 0
 fi
 
+ACTUAL_PATH=$(pwd)
+SRC_PATH=$(dirname $0)
+
+cd $SRC_PATH
+
 # If the first argument is exe1-b, then the program has to have 2 arguments
 if [ $1 == "exe1-b" ]; then
     if [ $# -lt 2 ]; then
@@ -29,9 +34,10 @@ if [ $1 == "exe1-b" ]; then
         exit 1
     fi
     cd exercise1
-    make partb > /dev/null
+    if [ ! -f "partb.c" ]; then
+        make partb > /dev/null
+    fi
     ./partb.out $2
-    make clean > /dev/null
     cd ..
     exit 0
 elif [ $1 == "exe1-c" ]; then
@@ -41,10 +47,16 @@ elif [ $1 == "exe1-c" ]; then
         exit 1
     fi
     cd exercise1
-    make partc > /dev/null
+    if [ ! -f "partc.c" ]; then
+        make partc > /dev/null
+    fi
     # Send all the arguments except the first one
     ./partc.out "${@:2}"
-    make clean > /dev/null
+    cd ..
+    exit 0
+elif [ $1 == "exe2" ]; then
+    cd exercise2
+    python3 main.py
     cd ..
     exit 0
 else
@@ -52,3 +64,5 @@ else
     echo -e "For more information, type: \033[1;92m$0 help\033[0m"
     exit 1
 fi
+
+cd $ACTUAL_PATH

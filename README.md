@@ -45,7 +45,139 @@ Implemente los siguientes programas en el lenguaje escogido:
 
 ### Respuesta
 
-<!-- TODO -->
+#### Apéndice A
+
+El lenguaje de programación escogido es C++.
+
+##### Estructuras de control de flujo
+
+C++ ofrece las siguientes estructuras de control de flujo
+
+- **Secuenciales**: Las instrucciones se ejecutan en el orden en que aparecen.
+- **Selección**: Permite ejecutar un bloque de instrucciones si se cumple una condición.
+  - `if`: Permite ejecutar un bloque de instrucciones si se cumple una condición.
+  - `if-else`: Permite ejecutar un bloque de instrucciones si se cumple una condición y otro bloque si no se cumple.
+  - `switch`: Permite ejecutar un bloque de instrucciones dependiendo del valor de una variable.
+  - `?:`: Operador ternario que permite ejecutar un bloque de instrucciones si se cumple una condición y otro si no se cumple.
+  - `if constexpr`: Permite ejecutar un bloque de instrucciones si se cumple una condición en tiempo de compilación.
+  - `if constexpr-else`: Permite ejecutar un bloque de instrucciones si se cumple una condición en tiempo de compilación y otro si no se cumple.
+  - `switch constexpr`: Permite ejecutar un bloque de instrucciones dependiendo del valor de una variable en tiempo de compilación.
+  - `?: constexpr`: Operador ternario que permite ejecutar un bloque de instrucciones si se cumple una condición en tiempo de compilación y otro si no se cumple.
+- **Iteración**: Permite ejecutar un bloque de instrucciones repetidamente.
+  - `for`: Permite ejecutar un bloque de instrucciones un número determinado de veces.
+  - `while`: Permite ejecutar un bloque de instrucciones mientras se cumpla una condición.
+  - `do-while`: Permite ejecutar un bloque de instrucciones al menos una vez y luego mientras se cumpla una condición.
+  - `for-range`: Permite iterar sobre un rango de valores.
+  - `for-range constexpr`: Permite iterar sobre un rango de valores en tiempo de compilación.
+  - `for-range-ref`: Permite iterar sobre un rango de valores por referencia.
+- **Transferencia de control**: Permite cambiar el flujo de ejecución de un programa.
+  - `break`: Permite salir de un bucle.
+  - `continue`: Permite saltar a la siguiente iteración de un bucle.
+  - `goto`: Permite saltar a una etiqueta en el código.
+  - `return`: Permite salir de una función y devolver un valor.
+  - `throw`: Permite lanzar una excepción.
+  - `try-catch`: Permite capturar una excepción y manejarla.
+  - `try-catch-else`: Permite capturar una excepción y manejarla si se lanza.
+  - `try-catch-finally`: Permite capturar una excepción y manejarla y ejecutar un bloque de instrucciones al final.
+
+##### Evaluación de expresiones y funciones
+
+Particularmente, C++ tiene evaluación normal y aplicativa. Ademas, la evaluación de argumentos/operandos se hace de izquierda a derecha. C++ no tiene evaluación perezosa, por lo que todos los argumentos de una función se evalúan antes de llamar a la función. De igual forma, las expresiones se evalúan de izquierda a derecha en el orden en que aparecen a la hora de revisar una condición, y pese a que el resultado sea definitivo, se sigue evaluando el resto de la expresión.
+
+Adicionalmente, C++ permite la sobrecarga de operadores, lo que permite definir el comportamiento de los operadores para tipos de datos personalizados.
+
+#### Apéndice B
+
+Para ejecutar el programa, se debe correr el siguiente comando:
+
+```bash
+./main exe1-b <n> 
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+#### Apéndice C
+
+Para ejecutar el programa, se debe correr el siguiente comando:
+
+```bash
+./main exe1-c <n1> <n2> <n3> ... <n>
+```
+
+Donde `<n1> <n2> <n3> ... <n>` son los números enteros que se desean ordenar.
+
+##### Implementación
+
+El algoritmo Mergesort es un algoritmo de ordenamiento que sigue la estrategia de divide y vencerás. Consiste en dividir la lista en dos mitades, ordenar cada mitad y luego combinar las dos mitades ordenadas. La implementación del algoritmo Mergesort en C++ es la siguiente:
+
+```cpp
+void merge(int arr[], int l, int m, int r){
+    // Get the sizes of the two arrays
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int L[n1], R[n2];
+
+    // Copy the data to the two arrays
+    for (int i = 0; i < n1; i++){
+        L[i] = arr[l + i];
+    }
+
+    for (int i = 0; i < n2; i++){
+        R[i] = arr[m + 1 + i];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = l;
+
+    // Merge the two arrays
+    while (i < n1 && j < n2){
+        if (L[i] <= R[j]){
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[] and R[]
+    while (i < n1){
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2){
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int arr[], int l, int r){
+    // If the left index is greater or equal to the right index, return
+    if (l >= r){
+        return;
+    }
+
+    // Get the middle index
+    int m = l + (r - l) / 2;
+    // Sort the two halves
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    // Merge the two halves
+    merge(arr, l, m, r);
+}
+```
+
+Se puede ver que el algoritmo Mergesort se divide en dos funciones: `merge` y `mergeSort`. La función `merge` se encarga de combinar dos arreglos ordenados en uno solo, mientras que la función `mergeSort` se encarga de dividir el arreglo en dos mitades, ordenar cada mitad y luego combinarlas.
+
+Tomé la decisión de implementar el algoritmo Mergesort de esta forma para separar la lógica de combinar dos arreglos ordenados de la lógica de dividir el arreglo en dos mitades y ordenarlas. De esta forma, se puede reutilizar la función `merge` en otros algoritmos de ordenamiento que requieran combinar dos arreglos ordenados.
+
+Adicionalmente, por simplicidad, decidí utilizar arreglos de tamaño fijo para almacenar los elementos de los dos arreglos que se van a combinar. Esto se debe a que el tamaño de los arreglos es conocido y no cambia durante la ejecución del programa. Además, crear subarreglos de tamaño fijo en la pila es más eficiente que utilizar memoria dinámica en este caso.
 
 ## Pregunta 2
 
@@ -71,7 +203,7 @@ Una vez iniciado el programa, pedirá repetidamente al usuario una acción para 
   
   Por ejemplo:
   - `EVAL PRE + * + 3 4 5 7` deberá imprimir `42`. 
-  - `EVAL POST 8 3- 8 4 4 + * +` deberá imprimir `69`.
+  - `EVAL POST 8 3 - 8 4 4 + * +` deberá imprimir `69`.
   
 - `MOSTRAR <orden> <expr>`: Representa una impresión en orden in–fijo de la expresión en `<expr>`, que está escrita de acuerdo a `<orden>`.
   
@@ -86,7 +218,7 @@ Una vez iniciado el programa, pedirá repetidamente al usuario una acción para 
     
   - `MOSTRAR PRE + * + 3 4 5 7` deberá imprimir (3 + 4) * 5 + 7. 
 
-  - `MOSTRAR POST 8 3- 8 4 4 + * +` deberá imprimir 8- 3 + 8 * (4 + 4).
+  - `MOSTRAR POST 8 3 - 8 4 4 + * +` deberá imprimir 8 - 3 + 8 * (4 + 4).
   
 - `SALIR`: Debe salir del programa. 
 
@@ -96,7 +228,13 @@ Investigue herramientas para pruebas unitarias y cobertura en su lenguaje escogi
 
 ### Respuesta
 
-<!-- TODO -->
+Para ejecutar el programa, se debe correr el siguiente comando:
+
+```bash
+./main exe2
+```
+
+<!-- TODO: Realizar la pruebas -->
 
 ## Pregunta 3
 

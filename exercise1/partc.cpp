@@ -106,7 +106,7 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    int n = argc - 1;
+    int n = argc - 1 ? atoi(argv[1]) : 0;
     int arr[n];
 
     for (int i = 0; i < n; i++){

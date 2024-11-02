@@ -1,3 +1,8 @@
 # C++ Outputs
 *.out
 *.o
+
+# Python Temporary Files and packages
+*.pyc
+__pycache__/
+venv/
