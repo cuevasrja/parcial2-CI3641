@@ -336,7 +336,53 @@ Realice también un análisis comparativo entre las tres implementaciones realiz
 
 ### Respuesta
 
-<!-- TODO -->
+Para ejecutar el programa, se debe correr el siguiente comando:
+
+```bash
+./main exe4 <n>
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para realizar el análisis comparativo, se debe correr el siguiente comando:
+
+```bash
+./main exe4-analysis <n>
+```
+
+Donde `<n>` es el número de pruebas que se desean realizar.
+
+En la ultima prueba realizada se obtuvieron los siguientes resultados:
+
+<!-- n   iterative   recursive        tail
+mean   1944.500000    0.002060    0.000029    0.000843
+std    1127.707852    0.001211    0.000007    0.000502
+min       1.000000    0.000006    0.000002    0.000003
+25%     972.750000    0.001018    0.000025    0.000408
+50%    1944.500000    0.002086    0.000029    0.000848
+75%    2916.250000    0.003104    0.000031    0.001270
+max    3888.000000    0.004260    0.000078    0.002660 -->
+
+**Números de pruebas**: 300
+
+|                     |      n      | Tiempo de Version Iterativa | Tiempo de Version Recursiva | Tiempo de Version Recursiva de Cola |
+|---------------------|-------------|-----------------------------|-----------------------------|-------------------------------------|
+| Promedio            |    1944.5   |           0.002060          |             0.000029        |               0.000843              |
+| Desviación estándar | 1127.707852 |           0.001211          |             0.000007        |               0.000502              |
+| Mínimo              |      1      |           0.000006          |             0.000002        |               0.000003              |
+| 25%                 |    972.75   |           0.001018          |             0.000025        |               0.000408              |
+| 50%                 |    1944.5   |           0.002086          |             0.000029        |               0.000848              |
+| 75%                 |   2916.25   |           0.003104          |             0.000031        |               0.001270              |
+| Máximo              |     3888    |           0.004260          |             0.000078        |               0.002660              |
+
+<!-- Imagen de resultados -->
+[![](exercise4/results.png)](exercise4/results.png)
+
+Se puede observar que la versión iterativa es la más lenta, seguida por la versión recursiva de cola y finalmente la versión recursiva. Esto se debe a que la versión iterativa tiene que realizar más operaciones que las versiones recursivas, ya que tiene que mantener un estado interno y realizar operaciones adicionales para simular la recursión. La versión recursiva de cola es más eficiente que la versión recursiva, ya que evita el uso de la pila de llamadas y realiza menos operaciones en cada llamada recursiva. La versión recursiva es la más eficiente, ya que realiza menos operaciones en cada llamada recursiva y no tiene que mantener un estado interno.
+
+En general, la versión recursiva es la más eficiente para este problema, seguida por la versión recursiva de cola y finalmente la versión iterativa. Sin embargo, la diferencia en eficiencia entre las tres versiones es pequeña y puede variar dependiendo del lenguaje de programación y del compilador utilizado.
+
+Particularmente, en Python, se utilizaron metodos de optimización para mejorar el rendimiento de las versiones recursivas, como la memorización de resultados y la eliminación de llamadas recursivas innecesarias. Esto permitió que se elevara el valor de n hasta alrededor 3900 sin problemas de límites de recursión.
 
 ## Pregunta 5
 
