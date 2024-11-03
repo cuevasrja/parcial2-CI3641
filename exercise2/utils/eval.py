@@ -1,7 +1,7 @@
 from typing import List
 from utils.operations import operations
 
-def pre_eval(expression: List[str]) -> int:
+def pre_eval(expression: List[str]) -> int|None:
     """
     ### Description
     Evaluate a prefix expression.
@@ -11,6 +11,7 @@ def pre_eval(expression: List[str]) -> int:
 
     ### Return
     - int: The result of the expression.
+    - None: If the expression is invalid.
     """
     nums: List[int] = [int(x) for x in expression if x.isdigit()]
     operators: List[str] = [x for x in expression if not x.isdigit()]
@@ -31,6 +32,7 @@ def post_eval(expression: List[str]) -> int|None:
 
     ### Return
     - int: The result of the expression.
+    - None: If the expression is invalid.
     """
     stack = []
     for token in expression:
@@ -45,6 +47,8 @@ def post_eval(expression: List[str]) -> int|None:
     
 
 def eval(order: str, expression: str) -> None|str:
+    """
+    """
     elements = expression.split(" ")
     if order.lower() == "pre":
         res = pre_eval(elements)

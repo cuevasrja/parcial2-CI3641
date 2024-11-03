@@ -67,6 +67,10 @@ elif [ $1 == "exe2-test" ]; then
     coverage report -m 
     coverage html
     cd ..
+elif [ $1 == "exe3-c" ]; then
+    cd exercise3
+    python3 main.py "${@:2}"
+    cd ..
 elif [ $1 == "exe4" ]; then
     if [ $# -lt 2 ]; then
         echo -e "\033[91;1mError:\033[0m The program needs at least 2 arguments"

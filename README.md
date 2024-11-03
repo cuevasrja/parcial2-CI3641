@@ -318,20 +318,61 @@ _Nota: el ordenamiento debe ser parte de la lógica del iterador. No es válido 
 | Y        | 5     |
 | Z        | 6     |
 | suspenso | proc  |
-| pc       | 9     |
 | x        | []    |
+| pc       | 9     |
 
 ##### Pila 1
 
-| Variable |    Valor  |
-|----------|-----------|
-| a        |     11    |
-| b        | [0, 5, 6] |
-| x        |     []    |
+| Variable |    Valor  | Índice |
+|----------|-----------|--------|
+| a        |     11    |    0   |
+| b        | [0, 5, 6] |    1   |
+| x        |     []    |    2   |
+| pc       |     0     |    3   |
 
 
 
 
+
+
+##### Impresión
+
+11
+5
+11
+6
+
+#### Apéndice b
+
+##### Variables Globales
+
+| Variable | Valor |
+|----------|-------|
+| X        | 0     |
+| Y        | 5     |
+| Z        | 6     |
+| misterio | proc  |
+| x        | []    |
+| pc       | 9     |
+
+##### Pila 1
+
+
+
+
+
+
+##### Impresión
+
+[1, 5, 10, 10, 5, 1]
+
+#### Apéndice c
+
+Para ejecutar el programa, se debe correr el siguiente comando:
+
+```bash
+./main exe3-c
+```
 
 ## Pregunta 4
 
@@ -423,7 +464,7 @@ Particularmente, en Python, se utilizaron metodos de optimización para mejorar 
 
 Considere la misma función maldad, definida en el parcial anterior:
 
-$$\text{maldad}(n) = trib(\lfloor \log_2(N(n, \lfloor \log_2(n) \rfloor)) \rfloor + )$$
+$$\text{maldad}(n) = trib(\lfloor \log_2(N(n, \lfloor \log_2(n) \rfloor)) \rfloor + 1)$$
 
 Decimos que unprogramaes políglota si el mismo código fuente puede ser compilado/interpretado por al menos dos diferentes lenguajes de programación. 
 
@@ -436,4 +477,51 @@ Su programa debe imprimir el valor correcto y tomando menos de 1 segundo de ejec
 
 ### Respuesta
 
-<!-- TODO -->
+Un lenguaje que se puede ejecutar con interpretes/compiladores diferentes es Java, ya que gracias a la JVM, se puede ejecutar el mismo codigo con interpretes de lenguajes como Kotlin, Scala, Groovy, etc.
+
+Primeramente, se debe compilar el programa en Java con el siguiente comando:
+
+```bash
+javac Main.java
+```
+
+Luego, para ejecutar el programa en Java, se debe correr el siguiente comando:
+
+```bash
+java Main <n>
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para ejecutar el programa ya compilado anteriormente en Kotlin, se debe correr el siguiente comando:
+
+```bash
+kotlin Main <n>
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+> [!WARNING] Importante
+> Los siguientes lenguajes de programación si bien según la documentación oficial se pueden ejecutar en la JVM, no se pudo realizar la ejecución de los programas en estos lenguajes debido a problemas de compatibilidad con la versión de Java utilizada en el sistema operativo.
+
+Para ejecutar el programa ya compilado anteriormente en Scala, se debe correr el siguiente comando:
+
+```bash
+scala Main <n>
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para ejecutar el programa ya compilado anteriormente en Groovy, se debe correr el siguiente comando:
+
+```bash
+groovy Main <n>
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para ejecutar el programa ya compilado anteriormente en Clojure, se debe correr el siguiente comando:
+
+```bash
+clojure Main <n>
+```
