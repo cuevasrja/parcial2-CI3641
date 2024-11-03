@@ -8,3 +8,6 @@ __pycache__/
 venv/
 .coverage
 htmlcov/
+
+# Java Outputs
+*.class
