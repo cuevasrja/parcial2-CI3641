@@ -234,7 +234,11 @@ Para ejecutar el programa, se debe correr el siguiente comando:
 ./main exe2
 ```
 
-<!-- TODO: Realizar la pruebas -->
+Para ejecutar las pruebas de cobertura, se debe correr el siguiente comando:
+
+```bash
+./main exe2-test
+```
 
 ## Pregunta 3
 
@@ -304,7 +308,30 @@ _Nota: el ordenamiento debe ser parte de la lógica del iterador. No es válido 
 
 ### Respuesta
 
-<!-- TODO -->
+#### Apéndice a
+
+##### Variables Globales
+
+| Variable | Valor |
+|----------|-------|
+| X        | 0     |
+| Y        | 5     |
+| Z        | 6     |
+| suspenso | proc  |
+| pc       | 9     |
+| x        | []    |
+
+##### Pila 1
+
+| Variable |    Valor  |
+|----------|-----------|
+| a        |     11    |
+| b        | [0, 5, 6] |
+| x        |     []    |
+
+
+
+
 
 ## Pregunta 4
 

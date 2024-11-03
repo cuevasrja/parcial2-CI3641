@@ -14,12 +14,14 @@ def pre_eval(expression: List[str]) -> int:
     """
     nums: List[int] = [int(x) for x in expression if x.isdigit()]
     operators: List[str] = [x for x in expression if not x.isdigit()]
+    if len(nums) == 0 or (len(operators) == 0 and len(nums) > 1):
+        return None
     result: int = nums[0]
     for i in range(1, len(nums)):
         result = operations[operators[i-1]](result, nums[i])
     return result
 
-def post_eval(expression: List[str]) -> int:
+def post_eval(expression: List[str]) -> int|None:
     """
     ### Description
     Evaluate a postfix expression.
@@ -39,17 +41,15 @@ def post_eval(expression: List[str]) -> int:
             a = stack.pop()
             result = operations[token](a, b)
             stack.append(result)
-    return stack[0]
+    return stack[0] if len(stack) == 1 else None
     
 
-def eval(order: str, expression: str) -> None:
+def eval(order: str, expression: str) -> None|str:
     elements = expression.split(" ")
     if order.lower() == "pre":
         res = pre_eval(elements)
-        print(res)
     elif order.lower() == "post":
         res = post_eval(elements)
-        print(res)
     else:
-        print("Invalid order")
-    print()
+        return None
+    return res

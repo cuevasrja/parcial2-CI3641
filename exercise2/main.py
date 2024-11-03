@@ -23,10 +23,12 @@ def main():
         option, command = menu()
         if option == 1:
             order, expression = command.split(" ", 1)
-            eval(order, expression)
+            res = eval(order, expression)
+            print(res if res else "Opcion invalida")
         elif option == 2:
             order, expression = command.split(" ", 1)
-            show(order, expression)
+            res = show(order, expression)
+            print(res if res else "Opcion invalida")
         elif option == 3:
             print("Saliendo...")
         else:
