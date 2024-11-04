@@ -318,8 +318,8 @@ _Nota: el ordenamiento debe ser parte de la lógica del iterador. No es válido 
 | Y        | 5     |
 | Z        | 6     |
 | suspenso | proc  |
-| x        | []    |
-| pc       | 9     |
+| x        | -     |
+| pc       | 7     |
 
 ##### Pila 1
 
@@ -327,13 +327,90 @@ _Nota: el ordenamiento debe ser parte de la lógica del iterador. No es válido 
 |----------|-----------|--------|
 | a        |     11    |    0   |
 | b        | [0, 5, 6] |    1   |
-| x        |     []    |    2   |
+| x        |     -     |    2   |
 | pc       |     0     |    3   |
 
+pc (3) cambia a 2
 
+pc (3) cambia a 3
 
+x (global) cambia a 11
 
+pc (global) cambia a 8
 
+pc (global) cambia a 7
+
+pc (3) cambia a 4
+
+##### Pilas 2
+
+| Variable |    Valor  | Índice |
+|----------|-----------|--------|
+| a        |      0    |    4   |
+| b        |   [5, 6]  |    5   |
+| x        |     -     |    6   |
+| pc       |     0     |    7   |
+
+pc (7) cambia a 2
+
+pc (7) cambia a 3
+
+x (global) cambia a 5
+
+pc (global) cambia a 8
+
+pc (global) cambia a 7
+
+pc (7) cambia a 4
+
+##### Pilas 3
+
+| Variable |    Valor  | Índice |
+|----------|-----------|--------|
+| a        |      5    |    8   |
+| b        |      [6]  |    9   |
+| x        |     -     |   10   |
+| pc       |     0     |   11   |
+
+pc (11) cambia a 2
+
+pc (11) cambia a 3
+
+x (global) cambia a 11
+
+pc (global) cambia a 8
+
+pc (global) cambia a 7
+
+pc (11) cambia a 4
+
+##### Pilas 4
+
+| Variable |    Valor  | Índice |
+|----------|-----------|--------|
+| a        |      6    |   12   |
+| b        |      []   |   13   |
+| pc       |     0     |   15   |
+
+pc (15) cambia a 1
+
+x (10) cambia a 6
+
+pc (11) cambia a 5
+
+x (6) cambia a 6
+
+pc (7) cambia a 5
+
+x (2) cambia a 6
+
+pc (3) cambia a 5
+
+x (global) cambia a 6
+
+pc (global) cambia a 8
+
+**Eliminamos secuencialmente las pilas**
 
 ##### Impresión
 
@@ -352,17 +429,298 @@ _Nota: el ordenamiento debe ser parte de la lógica del iterador. No es válido 
 | Y        | 5     |
 | Z        | 6     |
 | misterio | proc  |
-| x        | []    |
+| x        | -     |
+| y        | -     |
 | pc       | 9     |
 
 ##### Pila 1
 
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   5   |    0   |
+| x        |   -   |    1   |
+| y        |   -   |    2   |
+| r        |   -   |    3   |
+| pc       |   0   |    4   |
 
+pc (4) cambia a 3
 
+##### Pila 2
 
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   4   |    5   |
+| x        |   -   |    6   |
+| y        |   -   |    7   |
+| r        |   -   |    8   |
+| pc       |   0   |    9   |
 
+pc (9) cambia a 3
 
-##### Impresión
+##### Pila 3
+
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   3   |   10   |
+| x        |   -   |   11   |
+| y        |   -   |   12   |
+| r        |   -   |   13   |
+| pc       |   0   |   14   |
+
+pc (14) cambia a 3
+
+##### Pila 4
+
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   2   |   15   |
+| x        |   -   |   16   |
+| y        |   -   |   17   |
+| r        |   -   |   18   |
+| pc       |   0   |   19   |
+
+pc (19) cambia a 3
+
+##### Pila 5
+
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   1   |   20   |
+| x        |   -   |   21   |
+| y        |   -   |   22   |
+| r        |   -   |   23   |
+| pc       |   0   |   24   |
+
+pc (24) cambia a 3
+
+##### Pila 6
+
+| Variable | Valor | Índice |
+|----------|-------|--------|
+| n        |   0   |   25   |
+| pc       |   0   |   26   |
+
+pc (26) cambia a 1
+
+x (17) cambia a [1]
+
+**Salimos de la pila 6**
+
+pc (24) cambia a 1
+
+r (23) cambia a []
+
+pc (24) cambia a 5
+
+y (18) cambia a 1
+
+pc (24) cambia a 6
+
+r (23) cambia a [1]
+
+pc (24) cambia a 5
+
+y (18) cambia a 1
+
+pc (24) cambia a 6
+
+r (23) cambia a [1, 1]
+
+pc (24) cambia a 7
+
+x (16) cambia a [1, 1]
+
+**Salimos de la pila 5**
+
+pc (19) cambia a 5
+
+r (18) cambia a []
+
+pc (19) cambia a 6
+
+y (17) cambia a 1
+
+pc (19) cambia a 7
+
+r (18) cambia a [1]
+
+pc (19) cambia a 6
+
+y (17) cambia a 2
+
+pc (19) cambia a 7
+
+r (18) cambia a [1, 2]
+
+pc (19) cambia a 6
+
+y (17) cambia a 1
+
+pc (19) cambia a 7
+
+r (18) cambia a [1, 2, 1]
+
+pc (19) cambia a 8
+
+x (11) cambia a [1, 2, 1]
+
+**Salimos de la pila 4**
+
+pc (14) cambia a 5
+
+r (13) cambia a []
+
+pc (14) cambia a 6
+
+y (12) cambia a 1
+
+pc (14) cambia a 7
+
+r (13) cambia a [1]
+
+pc (14) cambia a 6
+
+y (12) cambia a 3
+
+pc (14) cambia a 7
+
+r (13) cambia a [1, 3]
+
+pc (14) cambia a 6
+
+y (12) cambia a 3
+
+pc (14) cambia a 7
+
+r (13) cambia a [1, 3, 3]
+
+pc (14) cambia a 6
+
+y (12) cambia a 1
+
+pc (14) cambia a 7
+
+r (13) cambia a [1, 3, 3, 1]
+
+pc (14) cambia a 8
+
+x (6) cambia a [1, 3, 3, 1]
+
+**Salimos de la pila 3**
+
+pc (9) cambia a 5
+
+r (8) cambia a []
+
+pc (9) cambia a 6
+
+y (7) cambia a 1
+
+pc (9) cambia a 7
+
+r (8) cambia a [1]
+
+pc (9) cambia a 6
+
+y (7) cambia a 4
+
+pc (9) cambia a 7
+
+r (8) cambia a [1, 4]
+
+pc (9) cambia a 6
+
+y (7) cambia a 6
+
+pc (9) cambia a 7
+
+r (8) cambia a [1, 4, 6]
+
+pc (9) cambia a 6
+
+y (7) cambia a 4
+
+pc (9) cambia a 7
+
+r (8) cambia a [1, 4, 6, 4]
+
+pc (9) cambia a 6
+
+y (7) cambia a 1
+
+pc (9) cambia a 7
+
+r (8) cambia a [1, 4, 6, 4, 1]
+
+pc (9) cambia a 8
+
+x (5) cambia a [1, 4, 6, 4, 1]
+
+**Salimos de la pila 2**
+
+pc (4) cambia a 5
+
+r (3) cambia a []
+
+pc (4) cambia a 6
+
+y (2) cambia a 1
+
+pc (4) cambia a 7
+
+r (3) cambia a [1]
+
+pc (4) cambia a 6
+
+y (2) cambia a 5
+
+pc (4) cambia a 7
+
+r (3) cambia a [1, 5]
+
+pc (4) cambia a 6
+
+y (2) cambia a 10
+
+pc (4) cambia a 7
+
+r (3) cambia a [1, 5, 10]
+
+pc (4) cambia a 6
+
+y (2) cambia a 10
+
+pc (4) cambia a 7
+
+r (3) cambia a [1, 5, 10, 10]
+
+pc (4) cambia a 6
+
+y (2) cambia a 5
+
+pc (4) cambia a 7
+
+r (3) cambia a [1, 5, 10, 10, 5]
+
+pc (4) cambia a 6
+
+y (2) cambia a 5
+
+pc (4) cambia a 7
+
+r (3) cambia a [1, 5, 10, 10, 5, 1]
+
+pc (4) cambia a 8
+
+x (global) cambia a [1, 5, 10, 10, 5, 1]
+
+**Salimos de la pila 1**
+
+pc (global) cambia a 10
+
+**Eliminamos secuencialmente las pilas**
+
+##### **Impresión**
 
 [1, 5, 10, 10, 5, 1]
 
