@@ -482,7 +482,7 @@ Un lenguaje que se puede ejecutar con interpretes/compiladores diferentes es Jav
 Primeramente, se debe compilar el programa en Java con el siguiente comando:
 
 ```bash
-javac Main.java
+javac Main.java && jar cvf Main.jar Main.class
 ```
 
 Luego, para ejecutar el programa en Java, se debe correr el siguiente comando:
@@ -501,6 +501,20 @@ kotlin Main <n>
 
 Donde `<n>` es el número entero que se desea evaluar.
 
+Para ejecutar el programa con JRuby, se debe correr el siguiente comando:
+
+```bash
+jruby -e 'require "java"; java_import "Main"; Main.main(["<n>"])'
+```
+
+Para ejecutar el programa ya compilado anteriormente en Groovy, se debe correr el siguiente comando:
+
+```bash
+groovy -cp Main.jar -e 'import Main; def main = new Main(); main.main("<n>")'
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
 > [!WARNING] Importante
 > Los siguientes lenguajes de programación si bien según la documentación oficial se pueden ejecutar en la JVM, no se pudo realizar la ejecución de los programas en estos lenguajes debido a problemas de compatibilidad con la versión de Java utilizada en el sistema operativo.
 
@@ -512,16 +526,10 @@ scala Main <n>
 
 Donde `<n>` es el número entero que se desea evaluar.
 
-Para ejecutar el programa ya compilado anteriormente en Groovy, se debe correr el siguiente comando:
-
-```bash
-groovy Main <n>
-```
-
-Donde `<n>` es el número entero que se desea evaluar.
-
 Para ejecutar el programa ya compilado anteriormente en Clojure, se debe correr el siguiente comando:
 
 ```bash
 clojure Main <n>
 ```
+
+Donde `<n>` es el número entero que se desea evaluar.

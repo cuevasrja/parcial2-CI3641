@@ -2,6 +2,8 @@ import java.util.Hashtable;
 import java.lang.Math;
 import java.math.BigInteger;
 
+// jruby -e 'require "java"; java_import "Main"; Main.main(["10"])'
+
 public class Main {
     public static void main(String[] args) {
         try {
