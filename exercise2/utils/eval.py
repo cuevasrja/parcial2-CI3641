@@ -13,14 +13,25 @@ def pre_eval(expression: List[str]) -> int|None:
     - int: The result of the expression.
     - None: If the expression is invalid.
     """
-    nums: List[int] = [int(x) for x in expression if x.isdigit()]
-    operators: List[str] = [x for x in expression if not x.isdigit()]
-    if len(nums) == 0 or (len(operators) == 0 and len(nums) > 1):
-        return None
-    result: int = nums[0]
-    for i in range(1, len(nums)):
-        result = operations[operators[i-1]](result, nums[i])
-    return result
+    stack = []
+
+    # For each token in the expression in reverse order
+    for token in reversed(expression):
+        # If the token is not an operator, add it to the stack
+        if token not in operations.keys():
+            stack.append(int(token))
+        # If the token is an operator
+        else:
+            # If there are less than 2 elements in the stack, the expression is invalid
+            if len(stack) < 2:
+                return None
+            # Pop the left and right operands
+            left_operand = stack.pop()
+            right_operand = stack.pop()
+            # Calculate the result of the operation and add it to the stack
+            result: int = operations[token](left_operand, right_operand)
+            stack.append(result)
+    return stack.pop()
 
 def post_eval(expression: List[str]) -> int|None:
     """
