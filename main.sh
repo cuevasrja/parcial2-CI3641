@@ -9,7 +9,7 @@ function menu() {
     echo -e "\033[92m4.\033[0m $1 exe2-test"
     echo -e "\033[92m5.\033[0m $1 exe3-c <n1> <n2> ... <n>"
     echo -e "\033[92m4.\033[0m $1 exe4 <n>"
-    echo -e "\033[92m5.\033[0m $1 exe4-test <n>"
+    echo -e "\033[92m5.\033[0m $1 exe4-analysis <n>"
 
     echo -e "\033[92m6.\033[0m $1 help"
 }
