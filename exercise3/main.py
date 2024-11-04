@@ -1,26 +1,28 @@
 import sys
 
-def sort(lista):
+def sort(arr):
     """
     ### Description:
-    This function sorts a list of integers in ascending order using the selection sort algorithm.
+    This function sorts a list of integers in ascending order using a recursive approach.
 
     ### Arguments:
-    - lista: list of integers to be sorted.
+    - arr: list of integers to be sorted.
 
     ### Returns:
     A generator that yields the elements of the list in ascending order.
     """
-    while lista:
+    if arr:
         # Find the index of the minimum element
-        min_index = min(range(len(lista)), key=lista.__getitem__)
-        # Remove the minimum element from the list and return it
-        yield lista.pop(min_index)
+        min_index = min(range(len(arr)), key=arr.__getitem__)
+        # Yield the minimum element
+        yield arr[min_index]
+        # Recursively sort the remaining elements
+        yield from sort(arr[:min_index] + arr[min_index+1:])
 
 def main():
-    lista = list(map(int, sys.argv[1:]))
+    arr = list(map(int, sys.argv[1:]))
 
-    for x in sort(lista):
+    for x in sort(arr):
         print(x, end=" ")
 
     print()
