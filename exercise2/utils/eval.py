@@ -46,13 +46,22 @@ def post_eval(expression: List[str]) -> int|None:
     - None: If the expression is invalid.
     """
     stack = []
+
+    # For each token in the expression
     for token in expression:
+        # If the token is an operand, add it to the stack
         if token.isdigit():
             stack.append(int(token))
+        # If the token is an operator
         else:
-            b = stack.pop()
-            a = stack.pop()
-            result = operations[token](a, b)
+            # If there are less than 2 elements in the stack, the expression is invalid
+            if len(stack) < 2:
+                return None
+            # Pop the left and right operands
+            right_operand = stack.pop()
+            left_operand = stack.pop()
+            # Calculate the result of the operation and add it to the stack
+            result = operations[token](left_operand, right_operand)
             stack.append(result)
     return stack[0] if len(stack) == 1 else None
     
