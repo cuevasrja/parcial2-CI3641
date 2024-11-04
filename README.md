@@ -477,6 +477,8 @@ Su programa debe imprimir el valor correcto y tomando menos de 1 segundo de ejec
 
 ### Respuesta
 
+#### Java como archivo principal
+
 Un lenguaje que se puede ejecutar con interpretes/compiladores diferentes es Java, ya que gracias a la JVM, se puede ejecutar el mismo codigo con interpretes de lenguajes como Kotlin, Scala, Groovy, etc.
 
 Primeramente, se debe compilar el programa en Java con el siguiente comando:
@@ -515,21 +517,38 @@ groovy -cp Main.jar -e 'import Main; def main = new Main(); main.main("<n>")'
 
 Donde `<n>` es el número entero que se desea evaluar.
 
-> [!WARNING] Importante
-> Los siguientes lenguajes de programación si bien según la documentación oficial se pueden ejecutar en la JVM, no se pudo realizar la ejecución de los programas en estos lenguajes debido a problemas de compatibilidad con la versión de Java utilizada en el sistema operativo.
+#### Python como archivo principal
 
-Para ejecutar el programa ya compilado anteriormente en Scala, se debe correr el siguiente comando:
+Otro lenguaje que se puede ejecutar con interpretes/compiladores diferentes es Python, ya que gracias a la JVM, se puede ejecutar el mismo codigo con interpretes de lenguajes como Jython, además de otros lenguajes como Ruby, Perl, etc.
+
+Para ejecutar el programa en Python, se debe correr el siguiente comando:
 
 ```bash
-scala Main <n>
+python main.py <n>
 ```
 
 Donde `<n>` es el número entero que se desea evaluar.
 
-Para ejecutar el programa ya compilado anteriormente en Clojure, se debe correr el siguiente comando:
+Para ejecutar el programa en Ruby, se debe correr el siguiente comando:
 
 ```bash
-clojure Main <n>
+ruby -e "require 'open3'; Open3.popen3('python main.py <n>') { |stdin, stdout, stderr, wait_thr| puts stdout.read }"
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para ejecutar el programa en Perl, se debe correr el siguiente comando:
+
+```bash
+perl -e 'system("python main.py <n>")'
+```
+
+Donde `<n>` es el número entero que se desea evaluar.
+
+Para ejecutar el programa en PHP, se debe correr el siguiente comando:
+
+```bash
+php -r 'system("python main.py <n>");'
 ```
 
 Donde `<n>` es el número entero que se desea evaluar.
