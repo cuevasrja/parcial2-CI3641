@@ -21,18 +21,31 @@ Implemente los siguientes programas en el lenguaje escogido:
 
 - Considere la siguiente función:
 
-  $$ f(n) = \begin{cases} n/2 & \text{si n es par} \\ 3n + 1 & \text{si n es impar} \end{cases} $$
+$$ 
+f(n) = 
+\begin{cases} n/2 & \text{si n es par} \\ 
+3n + 1 & \text{si n es impar} 
+\end{cases} 
+$$
 
   Definimos la función $\text{count}(n)$ como la cantidad de aplicaciones consectuvias de $f$ que se deben hacer sobre $n$, hasta que el resultado sea $1$.
 
   Por ejemplo: 
+  
   $$f(42) = 21$$ 
+  
   $$f(21) = 64$$
+  
   $$f(64) = 32$$
+  
   $$f(32) = 16$$
+  
   $$f(16) = 8$$
+  
   $$f(8) = 4$$
+  
   $$f(4) = 2$$
+  
   $$f(2) = 1$$
   
   Por lo tanto, $\text{count}(42) = 8$.
